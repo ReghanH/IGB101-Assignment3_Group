@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ThirdPersonCamera : MonoBehaviour {
+public class ThirdPersonCameraAce : MonoBehaviour {
 
     public Transform CameraTarget;
 	private float x = 0.0f;
@@ -27,18 +27,13 @@ public class ThirdPersonCamera : MonoBehaviour {
 	
 		
 	// Use this for initialization
-	void Start () {
-
-		//Startup variable allocations
-		//Vector3 Angles = transform.eulerAngles;
-		//x = Angles.x;
-		//y = Angles.y;
+	void Start () 
+	{
 		currentDistance = distance;
 		desireDistance = distance;
 		correctedDistance = distance;
 	}
 	
-	// Update is called once per frame
 	void LateUpdate () {
 
         if (CameraTarget) {
