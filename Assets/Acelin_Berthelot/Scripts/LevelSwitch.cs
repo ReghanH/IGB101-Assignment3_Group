@@ -1,27 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 internal class LevelSwitch : MonoBehaviour
 {
-    private GameManagerAce gameManagerAce;  
+    [Header("Scene to load when requirements are met")]
+    [SerializeField] private string nextLevel = "";
 
-    [SerializeField] internal string nextLevel;  
+    [Header("Pickups needed for THIS switch")]
+    [SerializeField] private int pickupsRequired = 3;
 
-    private void Start()
+    private GameManagerAce gameManagerAce;
+
+    private void Awake()
     {
-        gameManagerAce = GameObject.FindGameObjectWithTag("GameManagerAce").GetComponent<GameManagerAce>();
+        // New API (Unity 2023+)
+        gameManagerAce = Object.FindFirstObjectByType<GameManagerAce>();
+
+        // Fallback for older Unity versions (optional)
+#if !UNITY_2023_1_OR_NEWER
+        if (gameManagerAce == null)
+            gameManagerAce = FindObjectOfType<GameManagerAce>();
+#endif
+
+        if (gameManagerAce == null)
+            Debug.LogError("GameManagerAce not found in the scene!");
     }
 
-    private void OnTriggerEnter(Collider otherObject)
+    private void OnTriggerEnter(Collider other)
     {
-        if (otherObject.CompareTag("PlayerAce"))
-        {
-            if (gameManagerAce.currentPickups >= gameManagerAce.maxPickups && gameManagerAce.levelComplete)
-            {
-                SceneManager.LoadScene(nextLevel);
-            }
-        }
+        if (!other.CompareTag("PlayerAce") || gameManagerAce == null) return;
+
+        if (gameManagerAce.currentPickups >= pickupsRequired)
+            SceneManager.LoadScene(nextLevel);
     }
 }
