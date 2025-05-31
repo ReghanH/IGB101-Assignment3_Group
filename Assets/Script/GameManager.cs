@@ -41,7 +41,7 @@ private void UpdateGUI() {
             {
                 if (!audioSources[i].isPlaying)
                 {
-                    audioSources[1].Play();
+                    audioSources[i].Play();
             }
         }
     }
