@@ -3386,9 +3386,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2664611327374138500, guid: b001cb61a0b189d4394e77fcb27043d8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1649537384}
-    - targetCorrespondingSourceObject: {fileID: 2664611327374138500, guid: b001cb61a0b189d4394e77fcb27043d8, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1649537380}
     - targetCorrespondingSourceObject: {fileID: 2664611327374138500, guid: b001cb61a0b189d4394e77fcb27043d8, type: 3}
       insertIndex: -1
@@ -7554,7 +7551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1649537379}
   rotSpeed: 10
-  moveSpeed: 1
+  moveSpeed: 0.5
   sprintSpeed: 2
   jumpHeight: 3
 --- !u!65 &1649537381
@@ -7605,23 +7602,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1649537384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194305104}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfadc19d06b61b43bc9ca90ed78e3ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1649537379}
-  rotSpeed: 145
-  moveSpeed: 1
-  sprintSpeed: 2
-  jumpHeight: 3
 --- !u!1 &1662040990
 GameObject:
   m_ObjectHideFlags: 0
@@ -7633,9 +7613,9 @@ GameObject:
   - component: {fileID: 1662040994}
   - component: {fileID: 1662040993}
   - component: {fileID: 1662040992}
-  - component: {fileID: 1662040991}
   - component: {fileID: 1662040995}
   - component: {fileID: 1662040996}
+  - component: {fileID: 1662040997}
   m_Layer: 0
   m_Name: Sand
   m_TagString: Untagged
@@ -7643,28 +7623,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1662040991
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662040990}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1662040992
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7757,6 +7715,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa92899f5b2521b45994ec17e1d7f862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &1662040997
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662040990}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1671500025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4337563624218842, guid: e72f1a178c825f84bac03b6f867c7dcf, type: 3}
