@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     public int currentPickups = 0;
-    public int maxPickups = 5;
+    public int maxPickups = 8;
     public bool levelComplete = false;
 
     public Text pickupText;
