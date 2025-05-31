@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManagerReghan : MonoBehaviour
 {
     public GameObject player;
 
@@ -20,10 +20,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        LevelCompleteCheckReghan();
     }
 
-    private void LevelCompleteCheck(){
+    private void LevelCompleteCheckReghan(){
+        if (currentPickups >= maxPickups)
+            levelComplete = true;
+        else
+            levelComplete = false;
 
     }
 
