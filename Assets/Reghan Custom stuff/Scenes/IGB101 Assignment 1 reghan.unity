@@ -7547,13 +7547,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194305104}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39d7cb1f7aa15304ca069dabfe2dc04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1649537379}
   rotSpeed: 10
+  moveSpeed: 1
+  sprintSpeed: 2
+  jumpHeight: 3
 --- !u!65 &1649537381
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7609,7 +7612,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194305104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bfadc19d06b61b43bc9ca90ed78e3ac, type: 3}
   m_Name: 
