@@ -11,7 +11,10 @@ public class PlayerMovementAce : MonoBehaviour
     public float jumpHeight = 3f;
     private Rigidbody rb;
 
-    private bool canJump = true;  
+    private bool canJump = true;
+    private bool isJumping = false;
+    private bool isFalling = false;
+    private float jumpStateTimer = 0f;
     private float jumpCooldown = 2f;  
     private float jumpTimer = 0f;  
 
@@ -31,68 +34,132 @@ public class PlayerMovementAce : MonoBehaviour
         HandleJump();
         HandleJumpCooldown();
         CheckIfKnockedOver();
+
+        if (!isGrounded && !isFalling && rb.linearVelocity.y < -1f)
+
+
+        {
+            isFalling = true;
+            anim.SetTrigger("Falling");
+        }
+
+        if (isGrounded && isFalling)
+        {
+            anim.SetTrigger("JumpLand");
+            ResetJumpState();
+        }
+
     }
 
     private void HandleMovement()
-{
-    float moveDirectionZ = 0f;
-
-    // Check if the player is pressing "W" to move forward
-    if (Input.GetKey("w"))
     {
-        // If LeftShift is NOT held, it's walking
-        if (!Input.GetKey(KeyCode.LeftShift)) // LeftShift is false
+        float moveDirectionZ = 0f;
+
+        if (Input.GetKey("w"))
         {
-            anim.SetBool("Walking", true);  // Trigger Walking animation
-            anim.SetBool("Running", false); // Ensure Running is off
-            moveDirectionZ = moveSpeed;    // Set movement speed to walking speed
+            if (!Input.GetKey(KeyCode.LeftShift)) // Walking
+            {
+                anim.SetBool("Walking", true);
+                anim.SetBool("Running", false);
+                moveDirectionZ = moveSpeed;
+            }
+            else // Running
+            {
+                anim.SetBool("Walking", false);
+                anim.SetBool("Running", true);
+                moveDirectionZ = sprintSpeed;
+            }
+
+            anim.SetBool("WalkBack", false); // Ensure WalkBack is off
         }
-        else // If LeftShift is held, it's running
+        else if (Input.GetKey("s")) // Walking backward
         {
-            anim.SetBool("Walking", false); // Ensure Walking is off
-            anim.SetBool("Running", true);  // Trigger Running animation
-            moveDirectionZ = sprintSpeed;  // Set movement speed to sprint speed
+            anim.SetBool("WalkBack", true);
+            anim.SetBool("Walking", false);
+            anim.SetBool("Running", false);
+
+            Vector3 moveBack = -transform.forward * (moveSpeed * 0.5f) * Time.deltaTime;
+            rb.MovePosition(rb.position + moveBack);
         }
-    }
-    else
-    {
-        anim.SetBool("Walking", false);  // If "W" is not pressed, reset Walking animation
-        anim.SetBool("Running", false);  // If "W" is not pressed, reset Running animation
+        else // No movement keys
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Running", false);
+            anim.SetBool("WalkBack", false);
+        }
+
+        // Only apply forward movement (W)
+        if (Input.GetKey("w"))
+        {
+            Vector3 move = transform.forward * moveDirectionZ * Time.deltaTime;
+            rb.MovePosition(rb.position + move);
+        }
+
+        // Turning
+        if (Input.GetKey("a"))
+        {
+            transform.Rotate(0, -rotSpeed * Time.deltaTime, 0, Space.World);
+            anim.SetBool("Turn Left", true);
+        }
+        else if (Input.GetKey("d"))
+        {
+            transform.Rotate(0, rotSpeed * Time.deltaTime, 0, Space.World);
+            anim.SetBool("Turn Right", true);
+        }
+        else
+        {
+            anim.SetBool("Turn Left", false);
+            anim.SetBool("Turn Right", false);
+        }
+
+        if (!Input.GetKey("w") && !Input.GetKey("s"))
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Running", false);
+            anim.SetBool("WalkBack", false);
+        }
+
     }
 
-    // Apply movement using Rigidbody (move the character with physics)
-    Vector3 move = transform.forward * moveDirectionZ * Time.deltaTime;
-    rb.MovePosition(rb.position + move);
-
-    // Handle turning (left and right)
-    if (Input.GetKey("a"))
-    {
-        transform.Rotate(0, -rotSpeed * Time.deltaTime, 0, Space.World);
-        anim.SetBool("Turn Left", true);
-    }
-    else if (Input.GetKey("d"))
-    {
-        transform.Rotate(0, rotSpeed * Time.deltaTime, 0, Space.World);
-        anim.SetBool("Turn Right", true);
-    }
-    else
-    {
-        anim.SetBool("Turn Left", false);
-        anim.SetBool("Turn Right", false);
-    }
-}
 
 
 
     private void HandleJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump && !isJumping)
         {
             rb.AddForce(Vector3.up * jumpHeight, ForceMode.VelocityChange);
-            canJump = false; 
-            anim.SetTrigger("Jump");
-            jumpTimer = 0f;  
+            canJump = false;
+            isJumping = true;
+            jumpStateTimer = 0f;
+
+            if (anim.GetBool("Running"))
+            {
+                anim.SetTrigger("RunJump");
+            }
+            else if (anim.GetBool("Walking"))
+            {
+                anim.SetTrigger("WalkJump");
+            }
+            else
+            {
+                anim.SetTrigger("IdleJump");
+            }
         }
+
+        if (isJumping)
+        {
+            jumpStateTimer += Time.deltaTime;
+
+        }
+    }
+
+    
+private void ResetJumpState()
+    {
+        isJumping = false;
+        isFalling = false;
+        jumpTimer = 0f;
     }
 
     private void HandleJumpCooldown()
@@ -100,13 +167,31 @@ public class PlayerMovementAce : MonoBehaviour
         if (!canJump)
         {
             jumpTimer += Time.deltaTime;
-
             if (jumpTimer >= jumpCooldown)
             {
-                canJump = true; 
+                canJump = true;
             }
         }
     }
+
+    private bool isGrounded = false;
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+
 
 
     private bool knockedOver = false;

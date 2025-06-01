@@ -265,7 +265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd04a45c2d52324fb9d65ac24c50b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  childObject: {fileID: 1475340035}
+  childObjects:
+  - {fileID: 1475340035}
+  - {fileID: 1115069320}
 --- !u!1 &146661358
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2664611327373836644, guid: b001cb61a0b189d4394e77fcb27043d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.776
+      value: -38.299
       objectReference: {fileID: 0}
     - target: {fileID: 2664611327373836644, guid: b001cb61a0b189d4394e77fcb27043d8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2035,7 +2037,7 @@ GameObject:
   - component: {fileID: 1115069323}
   - component: {fileID: 1115069322}
   m_Layer: 5
-  m_Name: Controls(Text) (1)
+  m_Name: Objectives(Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2647,20 +2649,22 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Controls:
 
-    W - Move forward
+    W - Move Forward
 
-    A - Turn Left
+    S - Move Backwards
+
+    A - Turn
+    Left
 
     D - Turn Right
 
-    Space
-    - Jump
+    Space - Jump
 
-    L Shift - Increase Speed (while moving)
+    L Shift - Increase Speed (while
+    moving)
 
 
-    T - remove/display
-    this text'
+    T - remove/display this text'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3313,7 +3317,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793287136}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bacd5ca2447d0334ab2505a992a9da81, type: 3}
@@ -3993,7 +3997,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6556015148740171611, guid: d93ad79675ed77345b91f0d55609db2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.816
+      value: -36.514
       objectReference: {fileID: 0}
     - target: {fileID: 6556015148740171611, guid: d93ad79675ed77345b91f0d55609db2f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4221,7 +4225,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 449429175417289732, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.522
+      value: -39.158
       objectReference: {fileID: 0}
     - target: {fileID: 449429175417289732, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4260,12 +4264,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5182716971430534020, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
+      propertyPath: ZoomRate
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182716971430534020, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
       propertyPath: CameraTarget
       value: 
       objectReference: {fileID: 94325734}
+    - target: {fileID: 5182716971430534020, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
+      propertyPath: downAngleView
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182716971430534020, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
+      propertyPath: MaxViewDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182716971430534020, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
+      propertyPath: MinViewDistance
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182716971430534020, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
+      propertyPath: cameraTargetHeight
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5671157808743325404, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020225471479646672, guid: ddaee9a5ad3c1b244b75fac60801c07f, type: 3}
+      propertyPath: m_StereoConvergence
+      value: 8.31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4809,7 +4837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5931779004058611480, guid: b4994bd559749264a9c0face1002ccae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.591
+      value: -37.094
       objectReference: {fileID: 0}
     - target: {fileID: 5931779004058611480, guid: b4994bd559749264a9c0face1002ccae, type: 3}
       propertyPath: m_LocalPosition.y
