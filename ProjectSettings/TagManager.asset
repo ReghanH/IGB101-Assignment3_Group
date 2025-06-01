@@ -11,6 +11,8 @@ TagManager:
   - PlayerReghan
   - GameManager
   - GameManager_WenqiWang
+  - GameManagerTommy
+  - PlayerTommy
   layers:
   - Default
   - TransparentFX
