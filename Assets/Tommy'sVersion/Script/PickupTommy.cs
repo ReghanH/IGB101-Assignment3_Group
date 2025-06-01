@@ -12,7 +12,7 @@ public class PickupTommy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider otherObject)
     {
-        if (otherObject.transform.tag == "Player"){
+        if (otherObject.transform.tag == "PlayerTommy"){
             gameManager.currentPickups += 1;
             Destroy(this.gameObject);
         }
