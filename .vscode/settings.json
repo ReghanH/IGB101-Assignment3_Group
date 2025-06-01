@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "IGB101A3.sln"
+    "dotnet.defaultSolution": "IGB101-Assignment3_Group.sln"
 }
