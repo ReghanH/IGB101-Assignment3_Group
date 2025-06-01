@@ -34,7 +34,7 @@ public class PlayerMovementReghan : MonoBehaviour{
         Turning();
 
         Actions();
-
+        CheckIfKnockedOver();
     }
 
     private void ForwardMovement(){

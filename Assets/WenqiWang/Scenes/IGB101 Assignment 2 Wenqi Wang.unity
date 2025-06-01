@@ -26779,7 +26779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a26175496eb1d4389c79b35d45c0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: IGB101 Assignment 2 Wenqi Wang
+  nextLevel: IGB101 Assignment 1 reghan
 --- !u!65 &1702743197
 BoxCollider:
   m_ObjectHideFlags: 0

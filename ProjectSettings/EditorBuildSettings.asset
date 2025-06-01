@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Reghan Custom stuff/Scenes/IGB101 Assignment 1 reghan.unity
     guid: 45046bae05a339f40b0042765df33303
+  - enabled: 1
+    path: Assets/Acelin_Berthelot/Scenes/Acelin_Main.unity
+    guid: 7c133c2669c62554b9dcc8ca2c08913d
+  - enabled: 1
+    path: Assets/WenqiWang/Scenes/IGB101 Assignment 2 Wenqi Wang.unity
+    guid: 3b773209abb62534393950b090305ba0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
