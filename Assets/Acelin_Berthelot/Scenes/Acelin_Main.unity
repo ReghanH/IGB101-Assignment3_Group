@@ -314,7 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1639857136}
   currentPickups: 0
-  maxPickups: 10
+  maxPickups: 11
   levelComplete: 0
   pickupText: {fileID: 842991020}
   audiosources: []
@@ -3317,12 +3317,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793287136}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bacd5ca2447d0334ab2505a992a9da81, type: 3}
   m_Resource: {fileID: 8300000, guid: bacd5ca2447d0334ab2505a992a9da81, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
