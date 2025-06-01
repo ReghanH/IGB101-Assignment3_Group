@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WenqiWang/Scenes/IGB101 Assignment 2 Wenqi Wang.unity
     guid: 3b773209abb62534393950b090305ba0
+  - enabled: 1
+    path: Assets/Tommy'sVersion/101A2_TommyNguyen.unity
+    guid: c4f0a6a1207c63c43afb3b9a30f2bd87
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
