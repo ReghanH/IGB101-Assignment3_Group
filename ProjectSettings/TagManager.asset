@@ -9,6 +9,8 @@ TagManager:
   - PlayerAce
   - GameManagerReghan
   - PlayerReghan
+  - GameManager
+  - GameManager_WenqiWang
   layers:
   - Default
   - TransparentFX
