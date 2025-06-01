@@ -7,16 +7,18 @@ internal class LevelSwitch : MonoBehaviour
     [SerializeField] private string nextLevel = "";
 
     [Header("Pickups needed for THIS switch")]
-    [SerializeField] private int pickupsRequired = 3;
+    [SerializeField] private int pickupsRequired = 10;
+
+    [Header("Audio to play before switching scenes")]
+    [SerializeField] private AudioSource audioSource;
 
     private GameManagerAce gameManagerAce;
+    private bool hasTriggered = false;
 
     private void Awake()
     {
-        // New API (Unity 2023+)
         gameManagerAce = Object.FindFirstObjectByType<GameManagerAce>();
 
-        // Fallback for older Unity versions (optional)
 #if !UNITY_2023_1_OR_NEWER
         if (gameManagerAce == null)
             gameManagerAce = FindObjectOfType<GameManagerAce>();
@@ -28,9 +30,27 @@ internal class LevelSwitch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("PlayerAce") || gameManagerAce == null) return;
+        if (hasTriggered || !other.CompareTag("PlayerAce") || gameManagerAce == null)
+            return;
 
         if (gameManagerAce.currentPickups >= pickupsRequired)
-            SceneManager.LoadScene(nextLevel);
+        {
+            hasTriggered = true;
+
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.Play();
+                Invoke(nameof(SwitchScene), audioSource.clip.length);
+            }
+            else
+            {
+                SwitchScene();
+            }
+        }
+    }
+
+    private void SwitchScene()
+    {
+        SceneManager.LoadScene(nextLevel);
     }
 }
