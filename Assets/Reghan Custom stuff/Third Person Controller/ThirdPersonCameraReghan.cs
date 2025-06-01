@@ -17,17 +17,13 @@ public class ThirdPersonCameraReghan : MonoBehaviour {
 	public float MaxViewDistance = 15f;
 	public float MinViewDistance = 1f;
 	public int ZoomRate = 20;
-	private int lerpRate = 5;
 	private float distance = 3f;
 	private float desireDistance;
 	private float correctedDistance;
 	private float currentDistance;
 	
 	public float cameraTargetHeight = 1.0f;
-	
-	//checks if first person mode is on
-	private bool click = false;
-	
+		
 	// Use this for initialization
 	void Start () {
 

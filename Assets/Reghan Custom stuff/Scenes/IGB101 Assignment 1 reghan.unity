@@ -7606,9 +7606,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1.6
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -7641,7 +7641,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -22537,7 +22537,6 @@ GameObject:
   - component: {fileID: 1662040993}
   - component: {fileID: 1662040992}
   - component: {fileID: 1662040995}
-  - component: {fileID: 1662040996}
   - component: {fileID: 1662040997}
   m_Layer: 0
   m_Name: Sand
@@ -22624,18 +22623,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c181457fd95eaad40bdc984233fa3e5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1662040996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662040990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa92899f5b2521b45994ec17e1d7f862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &1662040997
@@ -23827,7 +23814,6 @@ GameObject:
   - component: {fileID: 1783105309}
   - component: {fileID: 1783105308}
   - component: {fileID: 1783105307}
-  - component: {fileID: 1783105310}
   m_Layer: 0
   m_Name: Coat of Arms
   m_TagString: Untagged
@@ -23925,18 +23911,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783105305}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1783105310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783105305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa92899f5b2521b45994ec17e1d7f862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1786880001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4354983329680326, guid: 61f8389dfe13a1441b7a47fe06931bac, type: 3}
